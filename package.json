@@ -49,7 +49,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<your-username>/dsh-attention.git"
+    "url": "git+https://github.com/zhaozixi/dsh-attention.git"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
