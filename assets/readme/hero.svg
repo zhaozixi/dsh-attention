@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">dsh-attention — 注意力碎片时间管理插件</title>
+  <desc id="desc">任务运行时自动弹出碎片时间活动建议：右侧示意浮动面板显示运行时长计时环、当前建议「颈部放松」45 秒、已完成与稍后提醒按钮；底部为四分类（微运动、脑力激活、微学习、快速整理）。</desc>
+
+  <defs>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0b429"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="400" rx="26" fill="#0d1117"/>
+
+  <!-- subtle motif: faint progress ring in the background right -->
+  <circle cx="880" cy="196" r="150" fill="none" stroke="#161b22" stroke-width="26"/>
+
+  <!-- ── left: title block ─────────────────────────────────────────────── -->
+  <g transform="translate(56 52)">
+    <text x="0" y="0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590" letter-spacing="2">DSH PLUGIN · WEB · MIT</text>
+
+    <text x="0" y="56" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="66" font-weight="700" fill="#e6edf3">dsh-attention</text>
+
+    <text x="0" y="104" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="24" font-weight="500" fill="#e6edf3">任务一运行，自动弹出碎片时间活动建议。</text>
+    <text x="0" y="140" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="20" fill="#9da7b3">把「任务进行中只能干等」变成 30 秒 – 3 分钟的微活动。</text>
+
+    <g transform="translate(0 186)">
+      <rect x="0" y="0" width="386" height="1" fill="#21262d"/>
+      <text x="0" y="30" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590">npm @zhaozixi/dsh-attention</text>
+      <circle cx="392" cy="24" r="3" fill="#f0b429"/>
+      <text x="410" y="30" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590">43 activities</text>
+      <circle cx="552" cy="24" r="3" fill="#2dd4bf"/>
+      <text x="570" y="30" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590">4 categories</text>
+    </g>
+  </g>
+
+  <!-- ── right: floating panel proof ───────────────────────────────────── -->
+  <g transform="translate(712 46)">
+    <!-- panel body -->
+    <rect x="0" y="0" width="432" height="308" rx="24" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+
+    <!-- panel header -->
+    <circle cx="26" cy="30" r="7" fill="#2dd4bf"/>
+    <text x="42" y="36" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="20" font-weight="600" fill="#e6edf3">碎片时间利用</text>
+    <text x="406" y="36" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#9da7b3">05:12</text>
+
+    <!-- progress ring + center -->
+    <g transform="translate(34 82)">
+      <circle cx="52" cy="52" r="46" fill="none" stroke="#21262d" stroke-width="8"/>
+      <circle cx="52" cy="52" r="46" fill="none" stroke="url(#ringGrad)" stroke-width="8" stroke-linecap="round"
+              stroke-dasharray="289" stroke-dashoffset="96" transform="rotate(-90 52 52)"/>
+      <text x="52" y="58" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="20" font-weight="600" fill="#f0b429">5s</text>
+    </g>
+
+    <!-- suggestion card -->
+    <rect x="136" y="76" width="256" height="128" rx="16" fill="#0d1117" stroke="#21262d" stroke-width="2"/>
+    <circle cx="158" cy="106" r="12" fill="#f0b429" opacity="0.18"/>
+    <text x="158" y="112" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="20" fill="#f0b429">✦</text>
+    <text x="182" y="112" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="20" font-weight="600" fill="#e6edf3">颈部放松</text>
+    <text x="156" y="146" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="18" fill="#9da7b3">缓慢转动颈部，左右各 5 圈</text>
+    <text x="156" y="186" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590">45s · micro-movement</text>
+
+    <!-- buttons -->
+    <rect x="136" y="220" width="122" height="40" rx="20" fill="#f0b429"/>
+    <text x="197" y="245" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="18" font-weight="600" fill="#0d1117">已完成</text>
+    <rect x="270" y="220" width="122" height="40" rx="20" fill="#21262d"/>
+    <text x="331" y="245" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="18" fill="#c9d1d9">稍后提醒</text>
+
+    <!-- stats row -->
+    <text x="34" y="286" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590">已建议 1 个活动 · 下次提醒 04:38 后</text>
+  </g>
+
+  <!-- ── bottom: four categories ───────────────────────────────────────── -->
+  <g transform="translate(56 344)">
+    <rect x="0" y="0" width="268" height="38" rx="19" fill="#161b22" stroke="#21262d"/>
+    <circle cx="22" cy="19" r="6" fill="#4caf7d"/>
+    <text x="36" y="25" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="18" fill="#e6edf3">微运动</text>
+    <text x="240" y="25" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590">12</text>
+
+    <rect x="284" y="0" width="268" height="38" rx="19" fill="#161b22" stroke="#21262d"/>
+    <circle cx="306" cy="19" r="6" fill="#5b8def"/>
+    <text x="320" y="25" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="18" fill="#e6edf3">脑力激活</text>
+    <text x="524" y="25" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590">10</text>
+
+    <rect x="568" y="0" width="268" height="38" rx="19" fill="#161b22" stroke="#21262d"/>
+    <circle cx="590" cy="19" r="6" fill="#b48ce0"/>
+    <text x="604" y="25" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="18" fill="#e6edf3">微学习</text>
+    <text x="808" y="25" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590">11</text>
+
+    <rect x="852" y="0" width="292" height="38" rx="19" fill="#161b22" stroke="#21262d"/>
+    <circle cx="874" cy="19" r="6" fill="#e0a458"/>
+    <text x="888" y="25" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="18" fill="#e6edf3">快速整理</text>
+    <text x="1116" y="25" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" fill="#7d8590">10</text>
+  </g>
+</svg>
