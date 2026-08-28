@@ -1,0 +1,26 @@
+# The dsh-attention bundle patch: task monitor + fragmented-time reminder
+# system. Applied after dsh-web-app's layer; rows here add the host-side
+# attention service and the browser-side attention panel.
+#
+# A patch replaces the targeted row's whole `config`, so each row below
+# restates every key it owns.
+#
+# Dual-face package: the single row's node half is the host service
+# (lib/index.js); the browser half (lib/client.js) is discovered through the
+# package.json `dsh.client` declaration and served by client-modules. This is
+# the same shape as dsh-client-connection — one row, two faces.
+
+- insert:
+    - id: attention
+      name: '@deepseek-ai/dsh-attention'
+      inject: [webServer]
+      config:
+        enabled: true
+        remindIntervalMs: 300000
+        firstReminderDelayMs: 5000
+        categories:
+          - micro-movement
+          - mind-refresh
+          - micro-learning
+          - quick-organize
+        maxActivitiesPerSession: 6
