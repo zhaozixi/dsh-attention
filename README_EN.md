@@ -70,6 +70,20 @@ Override the `attention` row in the profile's `cordis.patch.yml`:
     maxActivitiesPerSession: 6    # max suggestions per session
 ```
 
+## Uninstall
+
+```sh
+dsh plugin --profile web remove @zhaozixi/dsh-attention
+```
+
+After uninstalling:
+
+1. **Restart DSH** (host half unloads; the "Attention" sidebar entry and floating panel disappear).
+2. **Hard-refresh the browser** (client half cleans up).
+3. Optional cleanup: delete the persisted custom pool at `~/.dsh/profiles/web/attention-activities.json` (leaving it is harmless — a leftover JSON with no effect; deleting it restores the default 43 preset activities).
+
+> If you installed via a `link:` local path, uninstall with the matching path: `dsh plugin --profile web remove link:<your-path>`.
+
 ## Customizing the activity pool
 
 1. Click the "Attention" entry in the left sidebar (below New Session).
@@ -110,6 +124,15 @@ dsh-attention/
 | Reminder stays visible with no task | A stale window left over from closing/deleting a running session — fixed via the `agent/disposed` listener; upgrade to the latest version if it still happens |
 | No reminder for tasks in progress after a restart | Older versions lack seed recovery; after upgrading, both `agent/status` and goal support restart re-seeding |
 | Activity-pool edits have no effect | Saving persists via `POST /api/attention/activities`; confirm `poolSize` changes in the engine after saving |
+
+## Security notes
+
+- **Least privilege**: the plugin only reads DSH's event bus and task state (agent/status, goal, jobs, task-board) and schedules local timers while a task is running. It makes no network calls, reads no workspace file contents, and executes no arbitrary commands.
+- **HTTP surface**: `/api/attention/*` endpoints are only reachable by the local DSH web UI (bound to `127.0.0.1`); they are not exposed on any external port and only change reminder cadence and pool data — never session content.
+- **Local persistence**: the custom activity pool is written to `~/.dsh/profiles/web/attention-activities.json` (travels with the profile) and contains no credentials or session data. The plugin uploads nothing.
+- **No hidden behavior**: all code is readable, unobfuscated JavaScript; installation only registers a cordis plugin row and runs no extra install scripts.
+- **node-pty note**: `node-pty` in the dependency chain is shared with the DSH core; approving its build script (`pnpm approve-builds --all`) is standard procedure, and the plugin itself adds no extra native modules.
+- **Graceful degradation**: when task-board is not installed its polling is silently skipped; when goal/jobs services are absent the corresponding signal sources are skipped — the plugin keeps working on minimal setups and never fails because of a missing dependency.
 
 ## Contributing
 

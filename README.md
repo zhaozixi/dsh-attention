@@ -74,6 +74,20 @@ dsh plugin --profile web add link:../packages/dsh-attention
     maxActivitiesPerSession: 6    # 每会话建议上限
 ```
 
+## 卸载
+
+```sh
+dsh plugin --profile web remove @zhaozixi/dsh-attention
+```
+
+卸载后：
+
+1. **重启 DSH**（host 半卸载，侧边栏「注意力」入口与浮动面板消失）。
+2. **硬刷新浏览器**（client 半清理）。
+3. 可选清理：删除自定义活动池持久化文件 `~/.dsh/profiles/web/attention-activities.json`（不删则残留一份 JSON，无副作用；删则恢复默认 43 条预设活动）。
+
+> 注意：如果当初是用 `link:` 本地路径安装的，请用对应路径卸载：`dsh plugin --profile web remove link:<你的路径>`。
+
 ## 自定义活动池
 
 1. 点击左侧栏「注意力」入口（新会话下方）。
@@ -114,6 +128,15 @@ dsh-attention/
 | 无任务但提醒仍显示 | 运行中会话被关闭/删除时旧窗口残留——已通过 `agent/disposed` 监听修复；如仍出现请升级到最新版本 |
 | 重启后不提醒进行中的任务 | 旧版本无 seed 恢复；升级后 `agent/status` 与 goal 均支持重启补种 |
 | 活动池编辑不生效 | 保存走 `POST /api/attention/activities` 持久化；确认保存后引擎 `poolSize` 变化 |
+
+## 安全说明
+
+- **权限最小化**：插件只读 DSH 的事件总线与任务状态（agent/status、goal、jobs、task-board），仅在有任务运行时调度本地定时器；不访问网络，不读取工作区文件内容，不执行任意命令。
+- **HTTP 面**：`/api/attention/*` 接口仅供本机 DSH Web 界面调用（监听 `127.0.0.1`），不对外开放端口；它们只改变提醒节奏与活动池数据，不触碰会话内容。
+- **本地持久化**：自定义活动池写入 `~/.dsh/profiles/web/attention-activities.json`（随 profile），不含任何凭据或会话数据；插件不会上传任何信息。
+- **无隐藏行为**：所有代码均为可读的普通 JavaScript（无混淆）；安装只注册 cordis 插件行，不执行额外的安装脚本。
+- **node-pty 说明**：插件依赖链中的 `node-pty` 由 DSH 核心共用，构建脚本放行（`pnpm approve-builds --all`）是标准操作，插件自身不引入额外原生模块。
+- **降级行为**：task-board 未安装时，其信号轮询静默跳过；goal / jobs 服务缺失时对应信号源自动跳过——插件在最小配置下仍可工作，不会因依赖缺失而报错。
 
 ## 贡献
 
