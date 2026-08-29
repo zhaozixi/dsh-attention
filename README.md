@@ -15,7 +15,7 @@ DSH 跑任务时你通常只能盯着进度条。dsh-attention 把这段等待�
 - **多信号源任务监控** — `agent/status`（主会话对话、子代理、task-board 执行会话全覆盖）、goal 轮次、后台任务（jobs）、任务看板状态轮询，统一检测任务开始/结束。
 - **重启恢复** — host 重启后自动补种恢复运行中的任务窗口，重启前在跑的任务重启后继续提醒。
 - **提醒引擎** — 按可配置节奏推送活动建议（默认 5 分钟）；「已完成」立即推进下一条；任务结束生成碎片利用报告。
-- **内置活动库** — 43 条预设微活动，四大类轮询分配，同一会话内不重复。
+- **内置活动库** — 43 条预设微活动，四大类**随机分配**（每个新任务会话重新洗牌），同一会话内不重复。
 - **活动池编辑器** — 左侧栏「注意力」入口弹出编辑面板，四个分类可增删改活动，右下角保存/取消，持久化到 profile。
 - **全局置顶浮窗** — z-index 最大 + React Portal 挂 body，盖过一切弹窗；显示运行时长、建议数、下次提醒倒计时。
 
@@ -89,7 +89,7 @@ dsh-attention/
 └── lib/
     ├── index.js            # Host Service 入口（监控 + 引擎 + HTTP + 活动池持久化）
     ├── monitor.js          # 任务状态监控（agent/status + goal + jobs + task-board + 重启 seed）
-    ├── reminder-engine.js  # 提醒引擎（调度 + 轮询活动池 + 自定义活动表）
+    ├── reminder-engine.js  # 提醒引擎（调度 + 随机活动池 + 自定义活动表）
     ├── activities.js       # 内置活动库（43 条预设）
     ├── client.js           # 浏览器端：浮动面板 + 侧边栏入口 + 活动池编辑器
     └── invariant.js        # 断言辅助
@@ -103,6 +103,28 @@ dsh-attention/
 | 无任务但提醒仍显示 | 运行中会话被关闭/删除时旧窗口残留——已通过 `agent/disposed` 监听修复；如仍出现请升级到最新版本 |
 | 重启后不提醒进行中的任务 | 旧版本无 seed 恢复；升级后 `agent/status` 与 goal 均支持重启补种 |
 | 活动池编辑不生效 | 保存走 `POST /api/attention/activities` 持久化；确认保存后引擎 `poolSize` 变化 |
+
+## 发布到 npm
+
+### 版本迭代
+
+改代码后，按 [语义化版本](https://semver.org/lang/zh-CN/) 递增 `package.json` 的 `version`，然后：
+
+```sh
+cd dsh-attention
+npm publish --registry=https://registry.npmjs.org/ --access public
+```
+
+> 当前项目级 `.npmrc` 已固定官方源（`registry.npmjs.org`），无需每次加 `--registry`。首次发布需在项目目录执行 `npm login --registry=https://registry.npmjs.org/` 完成官方源认证（注意：不要登录到 npmmirror 镜像源，镜像不接收发布）。
+>
+> 若账号开启两步验证（2FA），可创建 **Granular Access Token**（权限：Read and write + **Bypass 2FA for publish**），并通过 `.npmrc` 的 `//registry.npmjs.org/:_authToken=<token>` 注入；token 不要提交进仓库。
+
+### 发版检查单
+
+- [ ] `npm pack --dry-run` 确认发布内容（files 字段覆盖 lib + cordis.patch.yml + README + LICENSE）
+- [ ] `version` 已递增，未与已发布版本重复
+- [ ] README 与包内容一致（安装命令、功能描述）
+- [ ] `npm view @zhaozixi/dsh-attention` 验证线上版本
 
 ## License
 
