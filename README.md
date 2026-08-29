@@ -4,6 +4,12 @@
 
 # dsh-attention
 
+<p align="center">
+  <a href="https://github.com/topics/dsh-plugin"><img alt="GitHub topic: dsh-plugin" src="https://img.shields.io/badge/topic-dsh--plugin-4d6bfe"></a>
+  <a href="https://www.npmjs.com/package/@zhaozixi/dsh-attention"><img alt="npm version" src="https://img.shields.io/npm/v/@zhaozixi/dsh-attention"></a>
+  <a href="https://github.com/zhaozixi/dsh-attention/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green"></a>
+</p>
+
 在 DeepSeek Harness 执行长时间任务（目标循环、后台任务、Agent 推理、任务看板执行）期间，主动提醒你利用碎片时间进行微活动，解决「任务进行中只能干等」的低效问题。
 
 ## 它解决什么问题
@@ -103,6 +109,16 @@ dsh-attention/
 | 无任务但提醒仍显示 | 运行中会话被关闭/删除时旧窗口残留——已通过 `agent/disposed` 监听修复；如仍出现请升级到最新版本 |
 | 重启后不提醒进行中的任务 | 旧版本无 seed 恢复；升级后 `agent/status` 与 goal 均支持重启补种 |
 | 活动池编辑不生效 | 保存走 `POST /api/attention/activities` 持久化；确认保存后引擎 `poolSize` 变化 |
+
+## 贡献
+
+本项目是**开源软件**（MIT License），欢迎任何人参与：
+
+1. **Fork** 本仓库到你的账号
+2. 基于 `main` 分支创建你的特性分支（`git checkout -b feat/xxx`）
+3. 提交改动后发起 **Pull Request** 到 `main`
+
+改动建议附带说明（修复的问题 / 新增功能 / 影响范围）。涉及活动池或提醒节奏的改动，请同步更新 README 与测试说明。
 
 ## 发布到 npm
 
