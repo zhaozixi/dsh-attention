@@ -12,6 +12,7 @@
   <a href="https://github.com/topics/dsh-plugin"><img alt="GitHub topic: dsh-plugin" src="https://img.shields.io/badge/topic-dsh--plugin-4d6bfe"></a>
   <a href="https://www.npmjs.com/package/@zhaozixi/dsh-attention"><img alt="npm version" src="https://img.shields.io/npm/v/@zhaozixi/dsh-attention"></a>
   <a href="https://github.com/zhaozixi/dsh-attention/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green"></a>
+  <a href="https://www.npmjs.com/package/@deepseek-ai/dsh"><img alt="DSH 版本" src="https://img.shields.io/badge/DSH-0.1.1--rc.2-4d6bfe"></a>
 </p>
 
 在 DeepSeek Harness 执行长时间任务（目标循环、后台任务、Agent 推理、任务看板执行）期间，主动提醒你利用碎片时间进行微活动，解决「任务进行中只能干等」的低效问题。

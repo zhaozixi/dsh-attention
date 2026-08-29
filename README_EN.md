@@ -8,6 +8,7 @@
   <a href="https://github.com/topics/dsh-plugin"><img alt="GitHub topic: dsh-plugin" src="https://img.shields.io/badge/topic-dsh--plugin-4d6bfe"></a>
   <a href="https://www.npmjs.com/package/@zhaozixi/dsh-attention"><img alt="npm version" src="https://img.shields.io/npm/v/@zhaozixi/dsh-attention"></a>
   <a href="https://github.com/zhaozixi/dsh-attention/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green"></a>
+  <a href="https://www.npmjs.com/package/@deepseek-ai/dsh"><img alt="DSH version" src="https://img.shields.io/badge/DSH-0.1.1--rc.2-4d6bfe"></a>
 </p>
 
 Actively reminds you to make good use of fragmented time during long-running DeepSeek Harness tasks (goal loops, background jobs, agent inference, task-board executions), solving the inefficiency of "just waiting while the task runs".
