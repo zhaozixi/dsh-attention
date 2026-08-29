@@ -121,28 +121,6 @@ This project is **open source** (MIT License) — everyone is welcome to contrib
 
 Please include a description with your changes (problem fixed / feature added / scope of impact). Changes touching the activity pool or reminder cadence should keep the README and test notes in sync.
 
-## Publishing to npm
-
-### Versioning
-
-After code changes, bump `version` in `package.json` following [semantic versioning](https://semver.org/), then:
-
-```sh
-cd dsh-attention
-npm publish --registry=https://registry.npmjs.org/ --access public
-```
-
-> The project-level `.npmrc` already pins the official registry (`registry.npmjs.org`), so `--registry` is not required every time. For the first publish, run `npm login --registry=https://registry.npmjs.org/` in the project directory to authenticate against the official registry (note: do not log in to the npmmirror mirror — it does not accept publishes).
->
-> If your account has two-factor authentication (2FA) enabled, create a **Granular Access Token** (permissions: Read and write + **Bypass 2FA for publish**) and inject it via `//registry.npmjs.org/:_authToken=<token>` in `.npmrc`; never commit the token.
-
-### Release checklist
-
-- [ ] `npm pack --dry-run` confirms the published contents (the `files` field covers lib + cordis.patch.yml + README + LICENSE)
-- [ ] `version` is bumped and does not collide with an already published version
-- [ ] README matches the package contents (install command, feature descriptions)
-- [ ] `npm view @zhaozixi/dsh-attention` verifies the live version
-
 ## License
 
 [MIT](./LICENSE)

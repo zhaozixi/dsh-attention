@@ -125,28 +125,6 @@ dsh-attention/
 
 改动建议附带说明（修复的问题 / 新增功能 / 影响范围）。涉及活动池或提醒节奏的改动，请同步更新 README 与测试说明。
 
-## 发布到 npm
-
-### 版本迭代
-
-改代码后，按 [语义化版本](https://semver.org/lang/zh-CN/) 递增 `package.json` 的 `version`，然后：
-
-```sh
-cd dsh-attention
-npm publish --registry=https://registry.npmjs.org/ --access public
-```
-
-> 当前项目级 `.npmrc` 已固定官方源（`registry.npmjs.org`），无需每次加 `--registry`。首次发布需在项目目录执行 `npm login --registry=https://registry.npmjs.org/` 完成官方源认证（注意：不要登录到 npmmirror 镜像源，镜像不接收发布）。
->
-> 若账号开启两步验证（2FA），可创建 **Granular Access Token**（权限：Read and write + **Bypass 2FA for publish**），并通过 `.npmrc` 的 `//registry.npmjs.org/:_authToken=<token>` 注入；token 不要提交进仓库。
-
-### 发版检查单
-
-- [ ] `npm pack --dry-run` 确认发布内容（files 字段覆盖 lib + cordis.patch.yml + README + LICENSE）
-- [ ] `version` 已递增，未与已发布版本重复
-- [ ] README 与包内容一致（安装命令、功能描述）
-- [ ] `npm view @zhaozixi/dsh-attention` 验证线上版本
-
 ## License
 
 [MIT](./LICENSE)
