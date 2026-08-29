@@ -18,7 +18,7 @@ export interface AttentionConfig {
   enabled?: boolean;
   /** Cadence between suggestions in ms. Default 300000 (5 min). */
   remindIntervalMs?: number;
-  /** Delay after task start for the first suggestion. Default 60000. */
+  /** Delay after task start for the first suggestion. Default 5000. */
   firstReminderDelayMs?: number;
   /** Active category pool. */
   categories?: ActivityCategory[];
@@ -52,7 +52,7 @@ export declare class AttentionService {
   state(): Record<string, unknown>;
   snooze(): { ok: boolean };
   resume(): { ok: boolean };
-  library(): { categories: string[]; activities: unknown[] };
+  advance(): { ok: boolean };
 }
 
 /** Host plugin body. */
