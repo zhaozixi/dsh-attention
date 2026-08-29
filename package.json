@@ -1,7 +1,7 @@
 {
   "name": "@zhaozixi/dsh-attention",
   "description": "DSH web plugin: task execution monitor + fragmented-time micro-activity reminders (floating panel UI, activity pool editor)",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "dsh",
     "deepseek-harness",
@@ -42,7 +42,8 @@
     "lib/activities.js",
     "cordis.patch.yml",
     "lib/types/**/*.d.ts",
-    "README.md"
+    "README.md",
+    "README_EN.md"
   ],
   "dsh": {
     "bundle": {

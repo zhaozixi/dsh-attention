@@ -5,6 +5,10 @@
 # dsh-attention
 
 <p align="center">
+  <strong>简体中文</strong> · <a href="./README_EN.md">English</a>
+</p>
+
+<p align="center">
   <a href="https://github.com/topics/dsh-plugin"><img alt="GitHub topic: dsh-plugin" src="https://img.shields.io/badge/topic-dsh--plugin-4d6bfe"></a>
   <a href="https://www.npmjs.com/package/@zhaozixi/dsh-attention"><img alt="npm version" src="https://img.shields.io/npm/v/@zhaozixi/dsh-attention"></a>
   <a href="https://github.com/zhaozixi/dsh-attention/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green"></a>
